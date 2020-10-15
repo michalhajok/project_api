@@ -11,10 +11,8 @@ dotenv.config();
 
 const app = express();
 
-const url = `${process.env.DB_CONNECT}`;
-
 mongoose
-  .connect(url, {
+  .connect(process.env.DB_CONNECT, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
