@@ -11,8 +11,10 @@ dotenv.config();
 
 const app = express();
 
+const url = `${process.env.DB_CONNECT}`;
+
 mongoose
-  .connect(process.env.DB_CONNECT, {
+  .connect(url, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -32,4 +34,4 @@ app.get("/", (req, res) => {
   res.json("Hello world !!!");
 });
 
-app.listen(process.env.PORT || 8080);
+app.listen(8080 || process.env.PORT);
