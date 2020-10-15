@@ -11,8 +11,9 @@ dotenv.config();
 
 const app = express();
 
-mongoose
-  .connect(process.env.DB_CONNECT, {
+const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_URL}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+process.env.mongoose
+  .connect(url, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
