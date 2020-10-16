@@ -29,8 +29,12 @@ app.use("/places", placeRouter);
 app.use("/movies", movieRouter);
 app.use("/events", eventRouter);
 
-app.get("/", (req, res) => {
-  res.json("Hello world !!!");
+app.get("/", async (req, res) => {
+  try {
+    res.json("Hello world !!!");
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
-app.listen(8080 || process.env.PORT);
+app.listen(process.env.PORT || 8080);
